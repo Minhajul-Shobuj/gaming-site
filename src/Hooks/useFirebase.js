@@ -3,16 +3,26 @@ import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/firebase.init";
 
 initializeAuthentication();
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
-    const googleSignIn = () => {
+    const googleSignIn = (history, location) => {
+        setIsLoading(true)
         const auth = getAuth();
-        return signInWithPopup(auth, provider)
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                setUser(result.user);
+                setError('');
+                const destination = location?.state?.from || '/';
+                history.push(destination);
+                // ...
+            }).catch((error) => {
+                setError(error.message)
+            }).finally(() => setIsLoading(false));
     };
 
     const logOut = () => {
@@ -37,7 +47,7 @@ const useFirebase = () => {
     }, [])
 
     return {
-        isLoading, setIsLoading, googleSignIn, user, error, logOut, setUser, setError
+        isLoading, googleSignIn, user, error, logOut, setUser, setError
     }
 
 };
