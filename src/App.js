@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
+import About from './Pages/About/About';
 import Footer from './Pages/Footer/Footer';
 import MemoryGame from './Pages/Games/MemoryGame/MemoryGame';
 import Snake from './Pages/Games/Snake/Snake';
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route exact path="/">
               <Home></Home>
+            </Route>
+            <Route path="/about">
+              <About></About>
             </Route>
             <Route path="/login">
               <Login></Login>
