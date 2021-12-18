@@ -2,10 +2,15 @@ import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import AuthProvider from './Context/AuthProvider';
+import Footer from './Pages/Footer/Footer';
 import MemoryGame from './Pages/Games/MemoryGame/MemoryGame';
+import Snake from './Pages/Games/Snake/Snake';
+import TicTakToe from './Pages/Games/TicTakToe/TicTakToe';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Navigation from './Pages/Navigation/Navigation';
+import NotFound from './Pages/NotFound/NotFound';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -23,10 +28,20 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <Route path="/memoryGame">
+            <PrivateRoute path="/memoryGame">
               <MemoryGame></MemoryGame>
+            </PrivateRoute>
+            <PrivateRoute path="/ticTakToe">
+              <TicTakToe></TicTakToe>
+            </PrivateRoute>
+            <PrivateRoute path="/snake">
+              <Snake></Snake>
+            </PrivateRoute>
+            <Route path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>

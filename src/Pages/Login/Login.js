@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const Login = () => {
-    const { googleSignIn, user, logOut, setUser, setError } = useAuth()
+    const { setIsLoading, googleSignIn, user, logOut, setUser, setError } = useAuth()
     const history = useHistory();
     const location = useLocation();
     const uri = location.state?.from || '/home';
@@ -16,7 +16,7 @@ const Login = () => {
                 history.push(uri);
             }).catch((error) => {
                 setError(error.message)
-            });
+            }).finally(() => setIsLoading(false));
     }
     return (
         <div className="mt-5">

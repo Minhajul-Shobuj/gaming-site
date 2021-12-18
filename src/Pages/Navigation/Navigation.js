@@ -9,12 +9,14 @@ const Navigation = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
                 <Container>
-                    <Navbar.Brand href="#home" className="text-success fw-bolder">Ea$y_Tour</Navbar.Brand>
+                    <Navbar.Brand href="#home" className="text-success fw-bolder">Gamer~Guyz</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
                             <Nav.Link as={NavLink} to="/memoryGame">Memory Game</Nav.Link>
+                            <Nav.Link as={NavLink} to="/ticTakToe">Tic-Tak-Toe</Nav.Link>
+                            <Nav.Link as={NavLink} to="/snake">Snake</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
                         </Nav>
                         <Nav>

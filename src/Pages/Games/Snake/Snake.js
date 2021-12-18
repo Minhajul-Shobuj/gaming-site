@@ -1,0 +1,12 @@
+import React from 'react';
+import img from '../../../Images/coming soon.jpg'
+
+const Snake = () => {
+    return (
+        <div className="my-5">
+            <img style={{ width: "300px", height: "300px" }} src={img} alt="" />
+        </div>
+    );
+};
+
+export default Snake;
